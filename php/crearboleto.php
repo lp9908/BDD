@@ -1,16 +1,12 @@
 <?php
 	include 'conec.php';
-
 	$total = $_POST["total"];
 	$idusuario = $_POST["idUsuario"];
 	$idempleado = $_POST["idEmpleado"];
-	
 	if($idusuario == ""){
 		$idUsuario = "0";
 	}
-	
 	try{
-		/*$conn = new mysqli($servername, $username, $password, $dbname);*/
 		$sqla = "SELECT COUNT(*) FROM ticketalimentos";
 		$stmt = $conn->prepare($sqla);
 		$stmt->execute();

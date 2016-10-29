@@ -1,11 +1,9 @@
 <?php
 	include 'conec.php';
-
 	$tipoBusqueda = $_POST["tipoBusqueda"];
 	$campo = $_POST["campo"];
 	$estado = $_POST["estado"];
 	$valor = $_POST["valor"];
-
 	$cabecera = "
 	<div class='table-responsive'>
 		<table class='table'>
@@ -30,11 +28,7 @@
 		</table>
 	</div>";
 	$tuplas="";
-
-
-
 	try{
-	    /*$conn = new mysqli($servername, $username, $password, $dbname);*/
 		$d = date('Y-m-j');
 		$consultaPre = "SELECT * FROM pelicula ";
 		if($valor != 10){
@@ -96,7 +90,6 @@
 		}else if ($tipoBusqueda == 4){
 			$consultaPre.= "ORDER BY clasificacion";
 		}
-		//echo "".$consultaPre;
 		$stmt = $conn->prepare($consultaPre);
 		try{
 			$stmt->execute();

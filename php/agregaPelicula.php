@@ -1,7 +1,5 @@
 <?php
 	include 'conec.php';
-	
-	//$idPelicula
 	$nombre = $_POST["nombre"];
 	$clasificacion = $_POST["clasificacion"];
 	$genero = $_POST["genero"];
@@ -10,9 +8,7 @@
 	$fechaE = $_POST["fechaE"];
 	$fechaT = $_POST["fechaT"];
 	$estado = $_POST["estado"];
-
 	try{
-		/*$conn = new mysqli($servername, $username, $password, $dbname);*/
 		$sqla = "SELECT COUNT(*) FROM pelicula";
 		$stmt = $conn->prepare($sqla);
 		$stmt->execute();
