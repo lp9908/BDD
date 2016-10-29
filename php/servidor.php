@@ -1,6 +1,5 @@
 <?php
-	include 'php/conec.php';
-	include 'php/conec2.php';
+	include 'conec.php';
 
     $listaProductos = json_decode($_POST['productos']);
 	//$noTicket = $_POST['noTicket'];

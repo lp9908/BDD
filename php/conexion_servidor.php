@@ -1,9 +1,4 @@
 <?php
-	/*$servername = "10.100.67.162";
-	$username = "master";
-	$password = "master";
-	$dbname = "cinebdd";*/
-		
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
