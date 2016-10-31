@@ -1,7 +1,7 @@
 # Proyecto BDD
 Cosas por hacer:
 - Limpir el codigo:
-- [ ] HTML.
+- [X] HTML.
 - [ ] JS.
 - [X] PHP.
 - Partes a implementar:
