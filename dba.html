@@ -616,96 +616,246 @@
 				************************************      MENU 4      *************************************************
 				*******************************************************************************************************--->
 	
-			<div id="menu4" class="tab-pane fade">
-				<h3>Menu 4</h3>
-				<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-		
-				<div class="row">
-					<div class="col-sm-6">
-						<form class="form-inline">
-							<div class="form-group">
-								<label for="idFuncion">ID: </label>
-								<input type="text" class="form-control" id="idFuncion">
+			<div id="menu4" class="tab-pane fade in active">
+				<h3>Funcion</h3>
+				<div class="container" >
+					<div class="row">
+						<div class="tab-content">
+							<div class="row">
+								<div>
+									<div class="tab-content">
+										<br/>
+										<div class="tab-pane fade in active">
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="row">
+														<div class="panel panel-default">
+															<div class="panel-heading">
+																<h3 class="panel-title">Opciones</h3>
+															</div>
+															<div class="panel-body">
+																<div class="row">
+																	<div class="col-sm-12">
+																		<div class="panel panel-default">
+																			<div class="panel-heading" id="aps-panel-c">
+																				<h3 class="panel-title">Asignar pelicula a sala</h3>
+																			</div>
+																			<div class="panel-body" id="aps-contenido-c" style='display:none;'>
+																				<div class="row">
+																					<div class="col-sm-12">
+																						<label for="relacion" class="col-lg-12 control-label">Pelicula</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<select class="form-control" id="aps-pelicula" name="pelicula">
+																							<option> Selecciona pelicula</option>
+																						</select>
+																					</div>
+																					<div class="col-sm-12">
+																						<br/>
+																						<label for="relacion" class="col-lg-12 control-label">Sala</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<select class="form-control" id="aps-sala" name="sla">
+																							<option> Selecciona sala</option>
+																						</select>
+																					</div>
+																					<div class="col-sm-12">
+																						<br/>
+																						<label for="relacion" class="col-lg-12 control-label">Idioma</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<select class="form-control" id="aps-idioma" name="idioma">
+																							<option> Selecciona idioma</option>
+																							<option value='Español'>Español</option>
+																							<option value='Subtitula'>Subtitulada</option>
+																							<option value='Original'>Original</option>
+																						</select>
+																					</div>
+																					<div class="col-sm-12">
+																						</br>
+																						<button type="button" class="btn btn-primary btn-block" id="asignarPSI">Asignar pelicula a sala</button>
+																					</div>
+																				</div>
+																				<div class="col-sm-12" id="aps-msj-error">
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col-sm-12">
+																		<div class="panel panel-default">
+																			<div class="panel-heading" id="cnf-panel-c">
+																				<h3 class="panel-title">Crear una nueva funcion</h3>
+																			</div>
+																			<div class="panel-body" id="cnf-contenido-cm" style='display:none;'>
+																				<div class="row">
+																					<div class="col-sm-12">
+																						<label for="relacion" class="col-lg-12 control-label">Pelicula</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<select class="form-control" id="cnf-pelicula" name="tablas">
+																							<option> Selecciona pelicula</option>
+																						</select>
+																					</div>
+																					<div class="col-sm-12">
+																						<br/>
+																						<label for="relacion" class="col-lg-12 control-label">Sala</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<select class="form-control" id="cnf-sala" name="tablas">
+																							<option> Selecciona sala</option>
+																						</select>
+																					</div>
+																					<div class="col-sm-12">
+																						<br/>
+																						<label for="relacion" class="col-lg-12 control-label">Idioma</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<select class="form-control" id="cnf-idioma" name="tablas">
+																							<option> Selecciona idioma</option>
+																						</select>
+																					</div>
+																					<div class="col-sm-12">
+																						<br/>
+																						<label for="relacion" class="col-lg-12 control-label">Fecha</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<input type="date" class="form-control" id="cnf-fecha" placeholder="Nombre de la tabla de hechos">
+																					</div>
+																					<div class="col-sm-12">
+																						<br/>
+																						<label for="relacion" class="col-lg-12 control-label">Hora</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<input type="time" class="form-control" id="cnf-hora" placeholder="Nombre de la tabla de hechos">
+																					</div>
+																					<div class="col-sm-12">
+																						</br>
+																						<button type="button" class="btn btn-primary btn-block" id="agregarFuncion">Crear una nueva funcion</button>
+																					</div>
+																				</div>
+																				<div class="col-sm-12" id="cnf-msj-error">
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col-sm-12">
+																		<div class="panel panel-default">
+																			<div class="panel-heading" id="cth-panel-e">
+																				<h3 class="panel-title">Eliminar una funcion (work in progress)</h3>
+																			</div>
+																			<div class="panel-body" id="cth-contenido-e" style='display:none;'>
+																				<div class="row">
+																					<div class="col-sm-12">
+																						<label for="relacion" class="col-lg-12 control-label">Pelicula</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<select class="form-control" id="cth-basedatos" name="tablas">
+																							<option> Selecciona pelicula</option>
+																						</select>
+																					</div>
+																					<div class="col-sm-12">
+																						<br/>
+																						<label for="relacion" class="col-lg-12 control-label">Sala</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<select class="form-control" id="cth-tabla" name="tablas">
+																							<option> Selecciona sala</option>
+																						</select>
+																					</div>
+																					<div class="col-sm-12">
+																						<br/>
+																						<label for="relacion" class="col-lg-12 control-label">Idioma</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<select class="form-control" id="cth-atributo" name="tablas">
+																							<option> Selecciona idioma</option>
+																						</select>
+																					</div>
+																					<div class="col-sm-12">
+																						<br/>
+																						<label for="relacion" class="col-lg-12 control-label">Fecha</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<input type="date" class="form-control" id="cnth-nombre" placeholder="Nombre de la tabla de hechos">
+																					</div>
+																					<div class="col-sm-12">
+																						<br/>
+																						<label for="relacion" class="col-lg-12 control-label">Hora</label>
+																					</div>
+																					<div class="col-sm-12">
+																						<select class="form-control" id="cth-atributo" name="tablas">
+																							<option> Selecciona funcion</option>
+																						</select>
+																					</div>
+																					<div class="col-sm-12">
+																						</br>
+																						<button type="button" class="btn btn-primary btn-block" id="cambiarnombreTDH">Eliminar una funcion</button>
+																					</div>
+																				</div>
+																				<div class="col-sm-12" id="eth-msj-error">
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-8">
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															<h3 class="panel-title">Calendario</h3>
+														</div>
+														<div class="panel-body">
+															<div class="row">
+																<div class="col-sm-12">
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<label for="relacion" class="col-lg-12 control-label">Fecha</label>
+																		</div>
+																		<div class="col-sm-12">
+																			<input type="date" class="form-control" id="info-fecha">
+																		</div>
+																	</div>
+																	<br/>
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<div class="panel panel-default">
+																				<div class="panel-heading">
+																					<h3 class="panel-title">Informacion de las funciones</h3>
+																				</div>
+																				<div class="panel-body">
+																					<div class="row">
+																						<div class="col-sm-12">
+																							<div id="infoSalas">
+																							
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<button type="submit" class="btn btn-default">Buscar</button>
-						</form>
-					</div>
-					
-					<div class="col-sm-6">
-						<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demoFuncion">Agregar Función</button>
-					</div>
-				</div>
-
-				<br><br><br>
-				
-				<div class="row">
-					<div class="container">
-						<div id="demoFuncion" class="collapse">
-							<form class="form-horizontal" method="post" action="agregarPelicula".php>
-								<div class="form-group">
-									<label class="control-label col-sm-2" for="pwd">Película:</label>
-									<div class="col-sm-3">
-										<select class="form-control" name="pelicula">
-											<option value="1">Spider-Man</option>
-											<option value="2">Thor</option>
-											<option value="3">DeadPool</option>
-											<option value="10">Harry Potter</option>
-										</select>
-									</div>
-								</div>
-							
-								<div class="form-group">
-									<label class="control-label col-sm-2" for="pwd">Sala:</label>
-									<div class="col-sm-3">
-										<select class="form-control" name="tipoSala">
-											<option value="1">2D</option>
-											<option value="2">2D</option>
-											<option value="3">3D</option>
-											<option value="4">IMAX</option>
-											<option value="5">4D</option>
-										</select>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="control-label col-sm-2" for="pwd">Idioma:</label>
-										<div class="col-sm-3">
-										<select class="form-control" name="idioma">
-											<option>Inglés</option>
-											<option>Francés</option>
-											<option>Español</option>
-											<option>Alemán</option>
-											<option>Polaco</option>
-										</select>
-									</div>
-								</div>
-							
-								<div class="form-group">
-									<label class="control-label col-sm-2" for="fechaFuncion">Fecha:</label>
-									<div class="col-sm-3">
-										<input type="date" class="form-control" id="fechaFuncion" name="fechaFuncion" placeholder="">
-									</div>
-								</div>
-							
-								<div class="form-group">
-										<label class="control-label col-sm-2" for="horaFuncion">Hora:</label>
-									<div class="col-sm-3">
-										<input type="time" class="form-control" id="horaFuncion" name="horaFuncion" placeholder="">
-									</div>
-								</div>
-							
-								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
-										<button type="submit" class="btn btn-default">Finalizar</button>
-									</div>
-								</div>
-							</form>
 						</div>
-					</div>
+					</div>  
 				</div>
 			</div>
 
-		
 			<!--*******************************************************************************************************
 				************************************      MENU 5      *************************************************
 				*******************************************************************************************************-->
@@ -1210,15 +1360,34 @@
 	<script type="text/javascript" src="js/agregarProducto.js"></script>
 	<script type="text/javascript" src="js/buscarProductos.js"></script>
 	
+	<script type="text/javascript" src="js/aps_obtener_peliculas.js"></script>
+	<script type="text/javascript" src="js/aps_obtener_salas.js"></script>
+	<script type="text/javascript" src="js/agregarSalaPelicula.js"></script>
+	
+	<script type="text/javascript" src="js/cnf_obtener_peliculas.js"></script>
+	<script type="text/javascript" src="js/cnf_obtener_salas.js"></script>
+	<script type="text/javascript" src="js/cnf_obtener_idiomas.js"></script>
+	<script type="text/javascript" src="js/agregarFuncion.js"></script>
+	
+	<script type="text/javascript" src="js/mostrar_ocultar_paneles.js"></script>
+	<script type="text/javascript" src="js/mostrar_info_funciones.js"></script>
+	
 	<script type="text/javascript" src="js/obtener_tablas.js"></script>
 	<script type="text/javascript" src="js/obtener_atributos.js"></script>
 	<script type="text/javascript" src="js/obtener_operadores_valor.js"></script>
 	<script type="text/javascript" src="js/obtener_predicado_simple.js"></script>
 	
-
 	<script>
 		$(window).load(function() {
+			var f = new Date();
 			busca_tablas();
+			busca_peliculas_aps();
+			busca_salas_aps();
+			busca_peliculas_cnf();
+			busca_salas_cnf();
+			busca_salas_cnf();
+			document.getElementById("info-fecha").value = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
+			mostrar_info_salas();
 		});
 	</script>
 	
