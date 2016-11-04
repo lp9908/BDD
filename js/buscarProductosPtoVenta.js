@@ -1,16 +1,12 @@
 var tablaProductoPtoVA = document.getElementById("resultadoBusquedaProductoPtoVA");
+var tablaTiket = document.getElementById("resultadoBusquedaTiket");
 var tablaVentaPaq = document.getElementById("tablaVenta");
 document.getElementById("CancelarVentaABtn").addEventListener("click",  cancelarVA);
 document.getElementById("ConfirmarVentaABtn").addEventListener("click", confirmarVA);
-
-//document.getElementById("ConfirmarVentaABtn").addEventListener("click", Hacer);
 var idP,datosProd, totalF, stotal;
 stotal=0;
 totalF=0;
 document.getElementById("campoEntradaProductoPtoVA").addEventListener("keyup", ejecutaConsultaProductoPtoVA);
-//$(document).ready(conboletos);
-
-
 function muestraProductoPtoVA (){
   var http_request = false;
   var valor = 10;
@@ -22,16 +18,12 @@ function muestraProductoPtoVA (){
         http_request = new ActiveXObjective("Microsoft.XMLHTTP");
       }
     }
-
-    //se define la funcion que procesara la información que sé recibe del servidor
     http_request.onreadystatechange = function(){
-      //se checa el estado de la petición
       if((http_request.readyState == 4)&&(http_request.status == 200)){
         tablaProductoPtoVA.innerHTML = "";
         tablaProductoPtoVA.innerHTML = http_request.responseText;
       }
     }
-
     http_request.open("POST","php/buscarProductoPtoVA.php",true);
     http_request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     http_request.send("valorProdPtoVA="+valor+"&campoProdPtoVA=");
@@ -39,8 +31,6 @@ function muestraProductoPtoVA (){
 
 function ejecutaConsultaProductoPtoVA(){
     var comodin = document.getElementById("campoEntradaProductoPtoVA").value;
-
-    //se obtienen los valores de entrada para la busqueda
     var parametros = "";
     parametros += "&campoProdPtoVA=" + document.getElementById("campoEntradaProductoPtoVA").value;
     parametros += "&valorProdPtoVA=0";
@@ -59,20 +49,16 @@ function ejecutaConsultaProductoPtoVA(){
       muestraProductoPtoVA();
     }
     else{
-      //se define la funcion que procesara la información que sé recibe del servidor
       http_request.onreadystatechange = function(){
-        //se checa el estado de la petición
         if((http_request.readyState == 4)&&(http_request.status == 200)){
           tablaProductoPtoVA.innerHTML = "";
           tablaProductoPtoVA.innerHTML = http_request.responseText;
         }
       }
-
       http_request.open("POST","php/buscarProductoPtoVA.php",true);
       http_request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
       http_request.send(parametros);
     }
-
 }
 
 function agregaProductoIDPtoVA ( idP ){
@@ -86,11 +72,8 @@ function agregaProductoIDPtoVA ( idP ){
           http_request = new ActiveXObjective("Microsoft.XMLHTTP");
         }
       }
-
-      //se prepara la funcion para la respuesta
       http_request.onreadystatechange = function (){
         if((http_request.readyState == 4) && (http_request.status == 200)){
-          //  datosProd=http_request.responseText;
           datosProd=http_request.responseText;
           var posicion = datosProd.lastIndexOf('%');
           var nom=datosProd.substring(posicion, 0);
@@ -111,17 +94,15 @@ function agregaProductoIDPtoVA ( idP ){
           total();
         }
       }
-
       http_request.open("POST", "php/buscarProductoPtoVAgregar.php", true);
       http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       http_request.send("IDProdPtoVA="+idP);
 }
 
-
+//Elimina la fila donde se encuentre dicho elemento, mandando ese mismo elemento [this]
 function deleteRow(r){
   var j = r.parentNode.parentNode.rowIndex;
       document.getElementById("tablaVenta").deleteRow(j);
-
       var tam=tablaVenta.rows.length;
         if(tam==1 || tam==0){
           document.getElementById('Total').innerHTML = "<FONT FACE='calibri' SIZE=5 COLOR=red></FONT>";
@@ -130,26 +111,19 @@ function deleteRow(r){
         else{
          total();
         }
-
-  }
+}
 
 function total() {
-   totalF=0;
+  totalF=0;
   var tam=tablaVenta.rows.length;
-//  alert("TAM:"+tam);
   var tablon, precF, cantF, pos1,pos2, posID, tipo;
   for(var i=1;i<=tam;i++){
       tablon = document.getElementById("tablaVenta").rows[i].cells;
       precF=tablon[2].innerHTML;
       cantF=tablon[3].innerHTML;
-
-//      alert("Precio: "+precF+"  Cantidad:"+cantF);
-
-
       pos1 = cantF.search("id");
       pos2 = cantF.search("min");
       posID = cantF.substring(pos1+4,pos2-2);
-  //    alert("ID:"+posID);
       var b = document.getElementById(posID);
       cantF=b.value;
       if(cantF==""){
@@ -157,27 +131,22 @@ function total() {
         document.getElementById('STotal').innerHTML = "<FONT FACE='calibri' SIZE=5 COLOR=blue></FONT>";
       }
       else{
-    //  cantF = document.getElementById(posID).value;
-    //  alert("Cantidad: "+cantF);
-  //    alert("Precio: "+precF+"  Cantidad:"+cantF);
-  //    alert("Precio: "+parseFloat(precF)+"  Cantidad:"+parseFloat(cantF));
-      totalF=totalF+(parseFloat(precF) * parseFloat(cantF));
+        totalF=totalF+(parseFloat(precF) * parseFloat(cantF));
+        if(Desc!=0){
+          stotal= totalF*((100-parseFloat(Desc)) / 100);
+          document.getElementById('Total').innerHTML = "<FONT FACE='calibri' SIZE=5 COLOR=red>"+stotal+"</FONT>";
+            document.getElementById('STotal').innerHTML = "<FONT FACE='calibri' SIZE=5 COLOR=blue>"+totalF+"</FONT>";
 
-
-    if(Desc!=0){
-      stotal= totalF*((100-parseFloat(Desc)) / 100);
-      document.getElementById('Total').innerHTML = "<FONT FACE='calibri' SIZE=5 COLOR=red>"+stotal+"</FONT>";
-        document.getElementById('STotal').innerHTML = "<FONT FACE='calibri' SIZE=5 COLOR=blue>"+totalF+"</FONT>";
-
-    }
-    else{
-      stotal=totalF;
-      document.getElementById('Total').innerHTML = "<FONT FACE='calibri' SIZE=5 COLOR=red>"+totalF+"</FONT>";
-        document.getElementById('STotal').innerHTML = "<FONT FACE='calibri' SIZE=5 COLOR=blue>"+totalF+"</FONT>";
-    }
+        }
+        else{
+          stotal=totalF;
+          document.getElementById('Total').innerHTML = "<FONT FACE='calibri' SIZE=5 COLOR=red>"+totalF+"</FONT>";
+            document.getElementById('STotal').innerHTML = "<FONT FACE='calibri' SIZE=5 COLOR=blue>"+totalF+"</FONT>";
+        }
+      }
     }
 }
-}
+
 function cancelarVA(){
   totalF=0;
   tablaVenta.innerHTML = "<thead><tr><th>ID</th><th>Elemento</th><th>Precio</th><th>Cantidad</th><th>Eliminar</th></tr></thead><tbody></tbody>";
@@ -185,96 +154,65 @@ function cancelarVA(){
     document.getElementById('STotal').innerHTML = "<FONT FACE='calibri' SIZE=5 COLOR=blue></FONT>";
   }
 
-
 function confirmarVA() {
-	//conboletos();
   var tablon, idF, cantF,tipoF, pos1,pos2, posID;
-    var prod;
+  var prod;
   var tam=tablaVenta.rows.length;
-//  window.alert(tam);
   var listaProductos = [];
-
-
   for(var i=1;i<tam;i++){
-  tablon = document.getElementById("tablaVenta").rows[i].cells;
-  idF=tablon[0].innerHTML;
-  cantF=tablon[3].innerHTML;
-  // alert("idf:"+idF);
-      pos1 = cantF.search("id");
-      pos2 = cantF.search("min");
-      posID = cantF.substring(pos1+4,pos2-2);
-      tipoF=cantF.substring(pos1+4,pos1+7);
-  //   alert("Tipo:  "+tipoF + "POSID "+posID);
-     if(tipoF=="Pro"){
+    tablon = document.getElementById("tablaVenta").rows[i].cells;
+    idF=tablon[0].innerHTML;
+    cantF=tablon[3].innerHTML;
+    pos1 = cantF.search("id");
+    pos2 = cantF.search("min");
+    posID = cantF.substring(pos1+4,pos2-2);
+    tipoF=cantF.substring(pos1+4,pos1+7);
+    if(tipoF=="Pro"){
        tipoF="producto";
-	   //alert ("producto");
-     }else if(tipoF=="Dlc"){
+    }else if(tipoF=="Dlc"){
        tipoF="dulce";
-	   //alert ("dulce");
-     }else{
+    }else{
        tipoF="paquete";
-	   //alert ("paquete");
-     }
-      var b = document.getElementById(posID);
-      cantF=b.value;
-    //  alert("Tipo:  "+tipoF + " ID: "+idF + "cantidad: "+cantF );
-      prod = new Elemento(idF,cantF,tipoF);
+    }
+    var b = document.getElementById(posID);
+    cantF=b.value;
+    prod = new Elemento(idF,cantF,tipoF);
     listaProductos.push(prod);
-    //  window.alert( "Veo elemento   " + verElem(prod));
-     /* IDS.push(idF);
-      windows.alert(IDS.toString());
-      IDS.push(cantF);
-
-      IDS.push(tipoF);
-      windows.alert("CONFIRMA LA VENTA --- $"+document.getElementById('Total').innerHTML);
-    console.log(listaProductos);
-    */
-
   }
-//windows.alert("CONFIRMA LA VENTA --- $"+ document.getElementById('Total').innerHTML);
-if(stotal==0 && totalF==0){
+  if(stotal==0 && totalF==0){
     window.alert("Realiza primero la venta");
-}else{
-	window.alert("CONFIRMA LA VENTA --- $"+ stotal);
-	crearboleto(totalF);
-	//window.alert("Elemento 1: "+ verElem(listaProductos[0]));
-	//window.alert(listaProductos);
-	//alert("Entra a HACER")
-	//alert(listaProductos.toString())
-	var productosJSON = JSON.stringify(listaProductos);
-	var i = 0;
-	var http_request = false;
-	if(window.XMLHttpRequest){
-		http_request = new XMLHttpRequest();
-	}else{
-		if(window.ActiveOXbject){
-			http_request = new ActiveXObjective("Microsoft.XMLHTTP");
-		}
-	}
-	//se prepara la funcion para la respuesta
-	http_request.onreadystatechange = function (){
-		if((http_request.readyState == 4) && (http_request.status == 200)){
-			window.alert(http_request.responseText);
-			muestraProductoPtoVA ();
-			mostrarTicket1();
-			cancelarVA();
-			total();
-			//muestraProductoPtoVA ();
-		}
-	}
-	//noTicket = document.getElementById("auxtiketInput").value;
-	//alert("" + noTicket);
-http_request.open("POST", "php/servidor.php", true);
-	http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http_request.send("productos="+productosJSON);
-
+  }
+  else{
+  	window.alert("CONFIRMA LA VENTA --- $"+ stotal);
+  	crearboleto(totalF);
+  	var productosJSON = JSON.stringify(listaProductos);
+  	var i = 0;
+  	var http_request = false;
+  	if(window.XMLHttpRequest){
+  		http_request = new XMLHttpRequest();
+  	}
+    else{
+  		if(window.ActiveOXbject){
+  			http_request = new ActiveXObjective("Microsoft.XMLHTTP");
+  		}
+  	}
+	  http_request.onreadystatechange = function (){
+		  if((http_request.readyState == 4) && (http_request.status == 200)){
+  			window.alert(http_request.responseText);
+  			muestraProductoPtoVA ();
+  			mostrarTicket1();
+  			cancelarVA();
+  			total();
+		  }
+	  }
+    http_request.open("POST", "php/servidor.php", true);
+  	http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  	http_request.send("productos="+productosJSON);
+  }
 }
 
-}
-
-// Esta será la estructura que tendrá el objeto
-function Elemento(idE, cantidadE, tipoE)
-{
+//Objeto utilizado para hacer la lista de venta, no importa si se trata de producto o paquete
+function Elemento(idE, cantidadE, tipoE){
     this.idE = idE;
     this.cantE = cantidadE;
     this.tipoE = tipoE;
@@ -286,12 +224,10 @@ function verElem( e) {
 }
 
 function crearboleto(vtotal){
-	//alert("Creando boleto");
 	var parametrosTicket = "";
 	parametrosTicket += "total="+vtotal;
 	parametrosTicket += "&idUsuario="+document.getElementById("campoEntradaClientePtoVA").value;
 	parametrosTicket += "&idEmpleado=1";
-	//alert(parametrosTicket);
 	var http_request = false;
 	if(window.XMLHttpRequest){
 		http_request = new XMLHttpRequest();
@@ -301,21 +237,13 @@ function crearboleto(vtotal){
 			http_request = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 	}
-
-	//se define la función que procesara la información que sé recibe del servidor
 	http_request.onreadystatechange = function (){
-		//se checael estado de la petición
-		if((http_request.readyState == 4) && (http_request.status == 200)){
-			window.alert(http_request.responseText);
-			//noTicket = http_request.responseText.toString();
-			//alert("" + noTicket);
-			//auxtiket.innerHTML = "";
-			//auxtiket.innerHTML = http_request.responseText;
-		}
+  	if((http_request.readyState == 4) && (http_request.status == 200)){
+  	   window.alert(http_request.responseText);
+  	}
 	}
-
 	http_request.open("POST", "php/crearboleto.php", true);
-  	http_request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  http_request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	http_request.send(parametrosTicket);
 }
 
@@ -336,16 +264,11 @@ function conboletos(){
 		}
 	}
 	http_request.open("POST", "php/conboleto.php", true);
-  	http_request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  http_request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	http_request.send();
 }
 
-var tablaTiket = document.getElementById("resultadoBusquedaTiket");
-//funcion de mostrarTicket
-
 function mostrarTicket1(){
-	//alert("hola");
-	//noTicket = document.getElementById("auxtiketInput").value;
 	var http_request = false;
 	if(window.XMLHttpRequest){
 		http_request = new XMLHttpRequest();
@@ -355,17 +278,13 @@ function mostrarTicket1(){
 			http_request = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 	}
-
 	http_request.onreadystatechange = function(){
-      //se checa el estado de la petición
       if((http_request.readyState == 4)&&(http_request.status == 200)){
         tablaTiket.innerHTML = "";
         tablaTiket.innerHTML = http_request.responseText;
       }
     }
-
 	http_request.open("POST", "php/buscaTiket.php", true);
-  	http_request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-	//http_request.send("noTicket="+noTicket);
+  http_request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	http_request.send();
 }
