@@ -1,8 +1,5 @@
-document.getElementById("cnf-pelicula").addEventListener("change", busca_salas_cnf);
-
-function busca_salas_cnf(){
-	var nombreP = document.getElementById("cnf-pelicula").value;
-	var selectaps = document.getElementById("cnf-sala");
+function busca_peliculas_ef(){
+	var selectaps = document.getElementById("ef-pelicula");
 	var http_request = null;
 	if(window.XMLHttpRequest){
 		http_request = new XMLHttpRequest();
@@ -16,7 +13,7 @@ function busca_salas_cnf(){
 			selectaps.innerHTML = http_request.responseText;
 		}
 	}
-	http_request.open("POST", "php/listar_salas_peliculas.php", true);
+	http_request.open("POST", "php/listar_peliculas.php", true);
 	http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http_request.send("nombreP="+nombreP);
+	http_request.send(null);
 }

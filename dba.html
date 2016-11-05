@@ -745,9 +745,8 @@
 																	<div class="col-sm-12">
 																		<div class="panel panel-default">
 																			<div class="panel-heading" id="ef-panel-e">
-																				<h3 class="panel-title">Eliminar una funcion (work in progress)</h3>
+																				<h3 class="panel-title">Eliminar una funcion</h3>
 																			</div>
-																			<div class="panel-body" id="cth-contenido-e"><!-- style='display:none;'-->
 																				<div class="row">
 																					<div class="col-sm-12">
 																						<label for="relacion" class="col-lg-12 control-label">Pelicula</label>
@@ -768,19 +767,12 @@
 																					</div>
 																					<div class="col-sm-12">
 																						<br/>
-																						<label for="relacion" class="col-lg-12 control-label">Idioma</label>
-																					</div>
-																					<div class="col-sm-12">
-																						<select class="form-control" id="ef-idioma" name="tablas">
-																							<option> Selecciona idioma</option>
-																						</select>
-																					</div>
-																					<div class="col-sm-12">
-																						<br/>
 																						<label for="relacion" class="col-lg-12 control-label">Fecha</label>
 																					</div>
 																					<div class="col-sm-12">
-																						<input type="date" class="form-control" id="ef-fecha">
+																						<select class="form-control" id="ef-fecha" name="tablas">
+																							<option> Selecciona fecha</option>
+																						</select>
 																					</div>
 																					<div class="col-sm-12">
 																						<br/>
@@ -1369,6 +1361,12 @@
 	<script type="text/javascript" src="js/cnf_obtener_idiomas.js"></script>
 	<script type="text/javascript" src="js/agregarFuncion.js"></script>
 	
+	<script type="text/javascript" src="js/ef_obtener_peliculas.js"></script>
+	<script type="text/javascript" src="js/ef_obtener_salas.js"></script>
+	<script type="text/javascript" src="js/ef_obtener_fechas.js"></script>
+	<script type="text/javascript" src="js/ef_obtener_horas.js"></script>
+	<script type="text/javascript" src="js/eliminarFuncion.js"></script>
+	
 	<script type="text/javascript" src="js/mostrar_ocultar_paneles.js"></script>
 	<script type="text/javascript" src="js/mostrar_info_funciones.js"></script>
 	
@@ -1384,6 +1382,7 @@
 			busca_peliculas_aps();
 			busca_salas_aps();
 			busca_peliculas_cnf();
+			busca_peliculas_ef();
 			document.getElementById("info-fecha").value = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
 			mostrar_info_salas();
 		});
