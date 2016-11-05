@@ -1,7 +1,6 @@
 document.getElementById("cnf-pelicula").addEventListener("change", busca_salas_cnf);
 
 function busca_salas_cnf(){
-	alert("Hola");
 	var nombreP = document.getElementById("cnf-pelicula").value;
 	var selectaps = document.getElementById("cnf-sala");
 	var http_request = null;
@@ -20,5 +19,4 @@ function busca_salas_cnf(){
 	http_request.open("POST", "php/listar_salas_peliculas.php", true);
 	http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	http_request.send("nombreP="+nombreP);
-	alert("nombreP="+nombreP);
 }
