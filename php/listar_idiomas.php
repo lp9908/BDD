@@ -5,6 +5,7 @@
 		$sala = $_POST["nombreS"];
 		$tables = "<option value=''> Selecciona idioma</option>";
 		$sql = "SELECT idioma FROM salapelicula WHERE idPelicula = $peli AND idSala = $sala";
+		echo $sql;
 		foreach ($conn->query($sql) as $row){
 			$tables .= "<option value='$row[0]'>".$row[0]."</option>";
 		}

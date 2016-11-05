@@ -7,7 +7,6 @@ function agregar_funcion(){
 	var nombreI = document.getElementById("cnf-idioma").value;
 	var nombreF = document.getElementById("cnf-fecha").value;
 	var nombreH = document.getElementById("cnf-hora").value;
-	alert("nombreP="+nombreP+"&nombreS="+nombreS+"&nombreI="+nombreI+"&nombreF="+nombreF+"&nombreH="+nombreH);
 	var alerta = document.getElementById("cnf-msj-error");
 	if(nombreP == ""){
 		aux++;
