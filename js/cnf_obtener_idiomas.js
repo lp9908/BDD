@@ -1,4 +1,3 @@
-document.getElementById("cnf-pelicula").addEventListener("change", busca_idiomas_cnf);
 document.getElementById("cnf-sala").addEventListener("change", busca_idiomas_cnf);
 
 function busca_idiomas_cnf(){
@@ -22,5 +21,6 @@ function busca_idiomas_cnf(){
 		http_request.open("POST", "php/listar_idiomas.php", true);
 		http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		http_request.send("nombreP="+nombreP+"&nombreS="+nombreS);
+		alert("nombreP="+nombreP+"&nombreS="+nombreS);
 	}
 }
