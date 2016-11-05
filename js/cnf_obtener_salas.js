@@ -1,8 +1,8 @@
 document.getElementById("cnf-pelicula").addEventListener("change", busca_salas_cnf);
 
 function busca_salas_cnf(){
-	alert("Hola");
 	var nombreP = document.getElementById("cnf-pelicula").value;
+	alert(document.getElementById("cnf-pelicula").value);
 	var selectaps = document.getElementById("cnf-sala");
 	var http_request = null;
 	if(window.XMLHttpRequest){
