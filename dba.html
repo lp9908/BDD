@@ -744,16 +744,16 @@
 																<div class="row">
 																	<div class="col-sm-12">
 																		<div class="panel panel-default">
-																			<div class="panel-heading" id="cth-panel-e">
-																				<h3 class="panel-title">Eliminar una funcion (work in progress)</h3>
+																			<div class="panel-heading" id="ef-panel-e">
+																				<h3 class="panel-title">Eliminar una funcion</h3>
 																			</div>
-																			<div class="panel-body" id="cth-contenido-e" style='display:none;'>
+																			<div class="panel-body" id="ef-contenido-e"><!-- style='display:none;'-->
 																				<div class="row">
 																					<div class="col-sm-12">
 																						<label for="relacion" class="col-lg-12 control-label">Pelicula</label>
 																					</div>
 																					<div class="col-sm-12">
-																						<select class="form-control" id="cth-basedatos" name="tablas">
+																						<select class="form-control" id="ef-pelicula" name="tablas">
 																							<option> Selecciona pelicula</option>
 																						</select>
 																					</div>
@@ -762,17 +762,8 @@
 																						<label for="relacion" class="col-lg-12 control-label">Sala</label>
 																					</div>
 																					<div class="col-sm-12">
-																						<select class="form-control" id="cth-tabla" name="tablas">
+																						<select class="form-control" id="ef-sala" name="tablas">
 																							<option> Selecciona sala</option>
-																						</select>
-																					</div>
-																					<div class="col-sm-12">
-																						<br/>
-																						<label for="relacion" class="col-lg-12 control-label">Idioma</label>
-																					</div>
-																					<div class="col-sm-12">
-																						<select class="form-control" id="cth-atributo" name="tablas">
-																							<option> Selecciona idioma</option>
 																						</select>
 																					</div>
 																					<div class="col-sm-12">
@@ -780,23 +771,25 @@
 																						<label for="relacion" class="col-lg-12 control-label">Fecha</label>
 																					</div>
 																					<div class="col-sm-12">
-																						<input type="date" class="form-control" id="cnth-nombre" placeholder="Nombre de la tabla de hechos">
+																						<select class="form-control" id="ef-fecha" name="tablas">
+																							<option> Selecciona fecha</option>
+																						</select>
 																					</div>
 																					<div class="col-sm-12">
 																						<br/>
 																						<label for="relacion" class="col-lg-12 control-label">Hora</label>
 																					</div>
 																					<div class="col-sm-12">
-																						<select class="form-control" id="cth-atributo" name="tablas">
+																						<select class="form-control" id="ef-hora" name="tablas">
 																							<option> Selecciona funcion</option>
 																						</select>
 																					</div>
 																					<div class="col-sm-12">
 																						</br>
-																						<button type="button" class="btn btn-primary btn-block" id="cambiarnombreTDH">Eliminar una funcion</button>
+																						<button type="button" class="btn btn-primary btn-block" id="eliminarFuncion">Eliminar una funcion</button>
 																					</div>
 																				</div>
-																				<div class="col-sm-12" id="eth-msj-error">
+																				<div class="col-sm-12" id="ef-msj-error">
 																				</div>
 																			</div>
 																		</div>
@@ -1369,6 +1362,12 @@
 	<script type="text/javascript" src="js/cnf_obtener_idiomas.js"></script>
 	<script type="text/javascript" src="js/agregarFuncion.js"></script>
 	
+	<script type="text/javascript" src="js/ef_obtener_peliculas.js"></script>
+	<script type="text/javascript" src="js/ef_obtener_salas.js"></script>
+	<script type="text/javascript" src="js/ef_obtener_fechas.js"></script>
+	<script type="text/javascript" src="js/ef_obtener_horas.js"></script>
+	<script type="text/javascript" src="js/eliminarFuncion.js"></script>
+	
 	<script type="text/javascript" src="js/mostrar_ocultar_paneles.js"></script>
 	<script type="text/javascript" src="js/mostrar_info_funciones.js"></script>
 	
@@ -1384,6 +1383,7 @@
 			busca_peliculas_aps();
 			busca_salas_aps();
 			busca_peliculas_cnf();
+			busca_peliculas_ef();
 			document.getElementById("info-fecha").value = f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate();
 			mostrar_info_salas();
 		});
