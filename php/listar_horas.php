@@ -1,5 +1,5 @@
 <?php
-	function listar_idiomas(){
+	function listar_horas(){
 		include "conexion_servidor.php";
 		$peli = $_POST["nombreP"];
 		$sala = $_POST["nombreS"];
@@ -13,7 +13,7 @@
 		echo $tables;
 		$conn = null;
 	}
-	listar_idiomas();
+	listar_horas();
 ?>
 
 

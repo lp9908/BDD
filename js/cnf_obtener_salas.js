@@ -3,9 +3,11 @@ document.getElementById("cnf-pelicula").addEventListener("change", busca_salas_c
 function busca_salas_cnf(){
 	var nombreP = document.getElementById("cnf-pelicula").value;
 	var selectaps = document.getElementById("cnf-sala");
+	var selectais = document.getElementById("cnf-idioma");
 	var http_request = null;
 	if(nombreP == ""){
-		selectaps.innerHTML = "<option  value=''> Selecciona sala </option>";
+		selectaps.innerHTML = "<option value=''> Selecciona sala </option>";
+		selectais.innerHTML = "<option value=''> Selecciona idioma </option>";
 	}else{
 		if(window.XMLHttpRequest){
 			http_request = new XMLHttpRequest();
