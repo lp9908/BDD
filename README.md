@@ -6,6 +6,6 @@ Cosas por hacer:
 - [X] PHP.
 - Partes a implementar:
 - [ ] Unir producto-paquete.
-- [ ] Funcion.
+- [X] Funcion.
 - [ ] Punto de venta boletos.
 - [ ] Miniterminos.
