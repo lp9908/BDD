@@ -1,11 +1,13 @@
-document.getElementById("ef-fecha").addEventListener("change", busca_fechas_ef);
+document.getElementById("ef-fecha").addEventListener("change", busca_horas_ef);
 
-function busca_fechas_ef(){
+function busca_horas_ef(){
 	var nombreP = document.getElementById("ef-pelicula").value;
 	var nombreS = document.getElementById("ef-sala").value;
 	var nombreF = document.getElementById("ef-fecha").value;
 	var selectaps = document.getElementById("ef-hora");
-	if(nombreP != "" && nombreS != ""){
+	if(nombreP == "" || nombreS == "" || nombreF == ""){
+		selectaps.innerHTML = "<option value=''> Selecciona funcion </option>";
+	}else{
 		var http_request = null;
 		if(window.XMLHttpRequest){
 			http_request = new XMLHttpRequest();

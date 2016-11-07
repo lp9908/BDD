@@ -1,5 +1,4 @@
 function busca_peliculas_aps(){
-	alert("Hola");
 	var selectaps = document.getElementById("aps-pelicula");
 	var http_request = null;
 	if(window.XMLHttpRequest){
